@@ -2,10 +2,7 @@ package coinpurse;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-
-//TODO import ArrayList and Collections (so you can use Collections.sort())
 
 /**
  * A coin purse contains coins. You can insert coins, withdraw money, check the
@@ -134,14 +131,14 @@ public class Purse {
 		}
 		return null;
 	}
-	
+
 	/**
+	 * Return the capacity and the balance of the purse.
 	 * 
+	 * @return the capacity and the balance of the purse.
 	 */
 	public String toString() {
 		return this.capacity + " coins with the value " + getBalance();
 	}
 
 }
-// TODO remove the TODO comments after you complete them.
-// TODO When you are finished, there should not be any TODO. Including this one.
