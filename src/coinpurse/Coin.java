@@ -6,7 +6,6 @@ package coinpurse;
  * 
  * @author Pasut Kittiprapas
  */
-// TODO declare that Coin implements Comparable<Coin>
 public class Coin implements Comparable<Coin> {
 	public static final String DEFAULT_CURRENCY = "Baht";
 	/** Value of the coin. */
@@ -54,12 +53,13 @@ public class Coin implements Comparable<Coin> {
 	}
 
 	/**
-	 * This method test whether two coins have the same value or not. If it's equal, return true. If not, return false.
+	 * This method test whether two coins have the same value or not. If it's
+	 * equal, return true. If not, return false.
 	 * 
 	 * @param obj
-	 * 			coin that we want to compare.  
+	 *            coin that we want to compare.
 	 * 
-	 * @return true if two coins are equal and false if it's not equal. 
+	 * @return true if two coins are equal and false if it's not equal.
 	 */
 	public boolean equals(Object obj) {
 		if (obj == null)
@@ -82,12 +82,14 @@ public class Coin implements Comparable<Coin> {
 	}
 
 	/**
-	 * This method test that this coin and another coin which has more value. If this coin has more value, return 1. 
-	 * If it's equal, return 0. If it has less value, return -1.
+	 * This method test that this coin and another coin which has more value. If
+	 * this coin has more value, return 1. If it's equal, return 0. If it has
+	 * less value, return -1.
 	 * 
 	 * @param o
-	 * 			is the coin that we want to compare
-	 * @return 1 if this coin has more value and return 0 if it's equal and return -1 if it has less value.
+	 *            is the coin that we want to compare
+	 * @return 1 if this coin has more value and return 0 if it's equal and
+	 *         return -1 if it has less value.
 	 */
 	@Override
 	public int compareTo(Coin o) {
@@ -102,4 +104,3 @@ public class Coin implements Comparable<Coin> {
 	}
 
 }
-
