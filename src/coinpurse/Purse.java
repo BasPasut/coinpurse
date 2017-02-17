@@ -3,6 +3,7 @@ package coinpurse;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * A coin purse contains coins. You can insert coins, withdraw money, check the
@@ -11,9 +12,9 @@ import java.util.Collections;
  * 
  * @author Pasut Kittiprapas
  */
-public class Purse {
+public class Purse{
 	/** Collection of objects in the purse. */
-	private List<Coin> money;
+	public List<Valuable> money;
 	/**
 	 * Capacity is maximum number of coins the purse can hold. Capacity is set
 	 * when the purse is created and cannot be changed.
@@ -86,18 +87,18 @@ public class Purse {
 	 * Insert a coin into the purse. The coin is only inserted if the purse has
 	 * space for it and the coin has positive value. No worthless coins!
 	 * 
-	 * @param coin
+	 * @param valuable
 	 *            is a Coin object to insert into purse
 	 * @return true if coin inserted, false if can't insert
 	 */
-	public boolean insert(Coin coin) {
+	public boolean insert(Valuable valuable) {
 		if (isFull() == true) {
 			return false;
 		}
-		if (coin.getValue() == 0) {
+		if (valuable.getValue() == 0) {
 			return false;
 		}
-		this.money.add(coin);
+		this.money.add(valuable);
 		return true;
 	}
 
@@ -111,22 +112,34 @@ public class Purse {
 	 * @return array of Coin objects for money withdrawn, or null if cannot
 	 *         withdraw requested amount.
 	 */
-	public Coin[] withdraw(double amount) {
-		Collections.sort(this.money);
+	public Valuable[] withdraw(double amount) {
+		Collections.sort(this.money , new Comparator<Valuable>() {
 
-		List<Coin> usedCoin = new ArrayList<>();
+			@Override
+			public int compare(Valuable o1, Valuable o2) {
+				if (o1 == null || o2 == null)
+					return -1;
+				if (o1.getValue() == o2.getValue())
+					return 0;
+				if (o1.getValue() - o2.getValue() < 0)
+					return -1;
+				return 1;
+			}
+		});
+
+		List<Valuable> usedValuable = new ArrayList<>();
 		for (int i = this.money.size() - 1; i >= 0; i--) {
 			if (amount >= this.money.get(i).getValue()) {
 				amount -= this.money.get(i).getValue();
-				usedCoin.add(this.money.get(i));
+				usedValuable.add(this.money.get(i));
 			}
 		}
 
 		if (amount == 0) {
-			for (int i = 0; i < usedCoin.size(); i++) {
-				money.remove(usedCoin.get(i));
+			for (int i = 0; i < usedValuable.size(); i++) {
+				money.remove(usedValuable.get(i));
 			}
-			return usedCoin.toArray(new Coin[0]);
+			return usedValuable.toArray(new Valuable[0]);
 
 		}
 		return null;
