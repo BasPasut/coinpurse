@@ -16,7 +16,7 @@ public class Purse{
 	/** Collection of objects in the purse. */
 	public List<Valuable> money;
 	/**
-	 * Capacity is maximum number of coins the purse can hold. Capacity is set
+	 * Capacity is maximum number of coins or banknotes the purse can hold. Capacity is set
 	 * when the purse is created and cannot be changed.
 	 */
 	private final int capacity;
@@ -25,7 +25,7 @@ public class Purse{
 	 * Create a purse with a specified capacity.
 	 * 
 	 * @param capacity
-	 *            is maximum number of coins you can put in purse.
+	 *            is maximum number of coins or banknotes you can put in purse.
 	 */
 	public Purse(int capacity) {
 		this.capacity = capacity;
@@ -88,7 +88,7 @@ public class Purse{
 	 * space for it and the coin has positive value. No worthless coins!
 	 * 
 	 * @param valuable
-	 *            is a Coin object to insert into purse
+	 *            is a valuable object to insert into purse
 	 * @return true if coin inserted, false if can't insert
 	 */
 	public boolean insert(Valuable valuable) {
@@ -103,13 +103,13 @@ public class Purse{
 	}
 
 	/**
-	 * Withdraw the requested amount of money. Return an array of Coins
+	 * Withdraw the requested amount of money. Return an array of Valuables
 	 * withdrawn from purse, or return null if cannot withdraw the amount
 	 * requested.
 	 * 
 	 * @param amount
 	 *            is the amount to withdraw
-	 * @return array of Coin objects for money withdrawn, or null if cannot
+	 * @return array of Valuables objects for money withdrawn, or null if cannot
 	 *         withdraw requested amount.
 	 */
 	public Valuable[] withdraw(double amount) {
@@ -151,7 +151,7 @@ public class Purse{
 	 * @return the capacity and the balance of the purse.
 	 */
 	public String toString() {
-		return this.capacity + " coins with the value " + getBalance();
+		return this.capacity + " valuables with the value " + getBalance();
 	}
 
 }
