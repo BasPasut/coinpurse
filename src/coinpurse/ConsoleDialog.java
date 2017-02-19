@@ -58,7 +58,7 @@ public class ConsoleDialog {
         while( scanline.hasNextDouble() ) {
             double value = scanline.nextDouble();
             Valuable valuable;
-            if(value <= 20){
+            if(value < 20){
             valuable = new Coin(value);
             System.out.printf("Deposit %s... ", valuable.toString() );
             
