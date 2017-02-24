@@ -41,6 +41,11 @@ public class Coin extends AbstractValuable implements Valuable {
 		if (super.currency.equals("Ringgit")) {
 			return super.value * 100 + " Sen" + " coin";
 		}
+		else if(super.currency.equals("Baht")){
+			if(super.value < 1){
+			return super.value *100 + " Satang coin";
+			}
+		}
 
 		return super.value + " " + super.currency + " coin";
 
