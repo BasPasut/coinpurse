@@ -153,5 +153,5 @@ public class Purse{
 	public String toString() {
 		return this.capacity + " valuables with the value " + getBalance();
 	}
-
+	
 }

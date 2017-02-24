@@ -62,12 +62,13 @@ public class CoinUtil {
 		
 		Map<String , Double> sumByMap = new HashMap<>();
 		for(Valuable v : valuables){
-			if(sumByMap.containsKey(v.getCurrency())){
-				sumByMap.put(v.getCurrency(), v.getValue()+sumByMap.get(v.getCurrency()));
-			}
-			else{
-				sumByMap.put(v.getCurrency(), v.getValue());
-			}
+//			if(sumByMap.containsKey(v.getCurrency())){
+//				sumByMap.put(v.getCurrency(), v.getValue()+sumByMap.get(v.getCurrency()));
+//			}
+//			else{
+//				sumByMap.put(v.getCurrency(), v.getValue());
+//			}
+			sumByMap.put(v.getCurrency(), sumByMap.getOrDefault(v.getCurrency(), 0.0) + v.getValue());
 		}
 		for(String current : sumByMap.keySet()){
 			System.out.println(current + " - " + sumByMap.get(current) );

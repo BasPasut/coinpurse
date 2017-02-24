@@ -6,12 +6,12 @@ package coinpurse;
  * 
  * @author Pasut Kittiprapas
  */
-public class Coin implements Comparable<Coin>, Valuable{
+public class Coin extends AbstractValuable implements Valuable {
 	public static final String DEFAULT_CURRENCY = "Baht";
 	/** Value of the coin. */
-	private double value;
+	double value;
 	/** The currency, of course. */
-	private String currency;
+	String currency;
 
 	/**
 	 * A coin with given value using the default currency.
@@ -19,8 +19,7 @@ public class Coin implements Comparable<Coin>, Valuable{
 	 * @param value
 	 */
 	public Coin(double value) {
-		this.value = value;
-		this.currency = DEFAULT_CURRENCY;
+		super(value);
 	}
 
 	/**
@@ -30,46 +29,7 @@ public class Coin implements Comparable<Coin>, Valuable{
 	 * @param currency
 	 */
 	public Coin(double value, String currency) {
-		this.value = value;
-		this.currency = currency;
-	}
-
-	/**
-	 * Get the value of a coin.
-	 * 
-	 * @return the value of a coin.
-	 */
-	public double getValue() {
-		return this.value;
-	}
-
-	/**
-	 * Get the currency of a coin.
-	 * 
-	 * @return the currency of a coin.
-	 */
-	public String getCurrency() {
-		return this.currency;
-	}
-
-	/**
-	 * This method test whether two coins have the same value or not. If it's
-	 * equal, return true. If not, return false.
-	 * 
-	 * @param obj
-	 *            coin that we want to compare.
-	 * 
-	 * @return true if two coins are equal and false if it's not equal.
-	 */
-	public boolean equals(Object obj) {
-		if (obj == null)
-			return false;
-		if (obj.getClass() != this.getClass())
-			return false;
-		Coin coin = (Coin) obj;
-		if ((coin.value == this.value) && (coin.currency.equalsIgnoreCase(this.currency)))
-			return true;
-		return false;
+		super(value, currency);
 	}
 
 	/**
@@ -78,28 +38,11 @@ public class Coin implements Comparable<Coin>, Valuable{
 	 * @return String of the value and the currency of the coin.
 	 */
 	public String toString() {
-		return this.value + "-" + this.currency + " Coins";
-	}
+		if (super.currency.equals("Ringgit")) {
+			return super.value * 100 + " Sen" + " coin";
+		}
 
-	/**
-	 * This method test that this coin and another coin which has more value. If
-	 * this coin has more value, return 1. If it's equal, return 0. If it has
-	 * less value, return -1.
-	 * 
-	 * @param o
-	 *            is the coin that we want to compare
-	 * @return 1 if this coin has more value and return 0 if it's equal and
-	 *         return -1 if it has less value.
-	 */
-	
-	public int compareTo(Coin o) {
-		if (o == null)
-			return -1;
-		if (this.value == o.value)
-			return 0;
-		if (this.value - o.value < 0)
-			return -1;
-		return 1;
+		return super.value + " " + super.currency + " coin";
 
 	}
 }
