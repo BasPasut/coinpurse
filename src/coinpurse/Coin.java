@@ -1,8 +1,7 @@
 package coinpurse;
 
-//TODO fix this Javadoc. It should be written as a COMPLETE SENTENCE WITH PERIOD.
 /**
- * A coin with a fix value and currency.
+ * A coin is a class that contain value and currency .
  * 
  * @author Pasut Kittiprapas
  */
@@ -40,10 +39,9 @@ public class Coin extends AbstractValuable implements Valuable {
 	public String toString() {
 		if (super.currency.equals("Ringgit")) {
 			return super.value * 100 + " Sen" + " coin";
-		}
-		else if(super.currency.equals("Baht")){
-			if(super.value < 1){
-			return super.value *100 + " Satang coin";
+		} else if (super.currency.equals("Baht")) {
+			if (super.value < 1) {
+				return super.value * 100 + " Satang coin";
 			}
 		}
 

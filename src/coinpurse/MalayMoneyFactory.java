@@ -1,5 +1,11 @@
 package coinpurse;
 
+/**
+ * This class is a MoneyFactory that create only Malaysian money.
+ * 
+ * @author Pasut Kittiprapas
+ *
+ */
 public class MalayMoneyFactory extends MoneyFactory {
 	private static long nextSerialNumber = 1000000;
 	@Override
